@@ -10,7 +10,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.angry_mouse.freefireth"
+        applicationId = "com.angry_mouse.note"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
