@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainScreenViewModel @Inject constructor(
+class CreateNoteViewModel @Inject constructor(
     private val voiceToTexServices: VoiceToTexServices,
     private val noteDao: NoteDao
 ) : ViewModel() {
@@ -34,6 +34,7 @@ class MainScreenViewModel @Inject constructor(
             noteDao.insertAll(noteModel)
         }
     }
+
 
     fun destroyVoiceInput() {
         voiceToTexServices.onDestroy()
