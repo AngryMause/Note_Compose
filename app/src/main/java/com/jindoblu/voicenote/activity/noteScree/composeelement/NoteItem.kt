@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.jindoblu.voicenote.data.model.room.NoteModel
 
 @Composable
-fun NoteItem(note: NoteModel,deletedId:(Long)->Unit) {
+fun NoteItem(note: NoteModel, deletedId: (Long) -> Unit) {
     var isExpanded by remember {
         mutableStateOf(false)
     }
@@ -37,7 +37,7 @@ fun NoteItem(note: NoteModel,deletedId:(Long)->Unit) {
             .padding(16.dp)
     ) {
         if (isExpanded) {
-            NoteItemDescription(note = note, noteId = {id->
+            NoteItemDescription(note = note, noteId = { id ->
                 deletedId(id)
             })
         } else {
