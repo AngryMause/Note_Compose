@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -70,7 +71,7 @@ fun CreateNotesItem(onBackClick: (NoteModel) -> Unit) {
     }
     Column(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize().safeDrawingPadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterVertically)
     ) {
@@ -142,7 +143,6 @@ fun SpeechItem(viewModel: CreateNoteViewModel, onBackClick: () -> Unit) {
                     context,
                     Manifest.permission.RECORD_AUDIO
                 ) -> {
-                    // Some works that require permission
                     viewModel.startVoiceInput()
                 }
 
@@ -157,7 +157,6 @@ fun SpeechItem(viewModel: CreateNoteViewModel, onBackClick: () -> Unit) {
         Spacer(modifier = Modifier.height(20.dp))
         Text(text = speechText, color = Color.White, fontSize = 35.sp)
         Button(onClick = {
-            Log.e("Test", "Button onClick speechText  : $speechText")
             viewModel.saveNote(NoteModel(noteName = "id=1", note = speechText))
             onBackClick()
         }) {

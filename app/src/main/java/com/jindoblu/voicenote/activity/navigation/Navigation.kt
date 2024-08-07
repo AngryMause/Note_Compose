@@ -31,9 +31,6 @@ fun MainActivityNavigation(modifier: Modifier) {
         }
         composable(NavigationState.NOTE_LIST.name) {
             NoteListScreen(
-                onBackCLick = {
-                    navController.popBackStack()
-                },
                 onCreateNote = {
                     navController.navigate(NavigationState.CREATE_NOTE.name)
                 })

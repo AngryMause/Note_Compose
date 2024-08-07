@@ -30,7 +30,7 @@ import com.jindoblu.voicenote.activity.noteScree.composeelement.NoteItem
 import com.jindoblu.voicenote.data.model.room.NoteModel
 
 @Composable
-fun NoteListScreen( onCreateNote: () -> Unit) {
+fun NoteListScreen(onCreateNote: () -> Unit) {
     val noteListViewModel = hiltViewModel<NoteListViewModel>()
     val noteListState = noteListViewModel.noteDaos.collectAsState(initial = emptyList<NoteModel>())
     var noteList by remember {
@@ -47,21 +47,22 @@ fun NoteListScreen( onCreateNote: () -> Unit) {
     ) {
         Text(
             text = "All Notes",
-            fontSize = 20.sp,
+            fontSize = 40.sp,
             modifier = Modifier
                 .padding(20.dp)
                 .align(Alignment.TopCenter)
         )
         LazyColumn(
             modifier = Modifier
-                .padding(10.dp)
+                .padding(top = 100.dp)
                 .fillMaxWidth(0.9f)
                 .fillMaxHeight()
+                .align(Alignment.Center)
         ) {
             items(noteList.size) { index ->
                 NoteItem(note = noteList[index], deletedId = { id ->
                     noteListViewModel.deleteNoteById(id)
-                })
+                }, modifier = Modifier)
             }
         }
         FloatingActionButton(
