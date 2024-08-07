@@ -12,6 +12,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.jindoblu.voicenote.activity.noteScree.composeelement.NoteItem
 import com.jindoblu.voicenote.data.model.room.NoteModel
@@ -43,6 +45,13 @@ fun NoteListScreen(onBackCLick: () -> Unit, onCreateNote: () -> Unit) {
             .fillMaxSize()
             .background(Color.LightGray)
     ) {
+        Text(
+            text = "All Notes",
+            fontSize = 20.sp,
+            modifier = Modifier
+                .padding(20.dp)
+                .align(Alignment.TopCenter)
+        )
         LazyColumn(
             modifier = Modifier
                 .padding(10.dp)
@@ -50,7 +59,9 @@ fun NoteListScreen(onBackCLick: () -> Unit, onCreateNote: () -> Unit) {
                 .fillMaxHeight()
         ) {
             items(noteList.size) { index ->
-                NoteItem(note = noteList[index])
+                NoteItem(note = noteList[index], deletedId = { id ->
+                    noteListViewModel.deleteNoteById(id)
+                })
             }
         }
         FloatingActionButton(

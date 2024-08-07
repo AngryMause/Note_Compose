@@ -9,7 +9,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,8 +16,6 @@ import javax.inject.Inject
 class NoteListViewModel @Inject constructor(
     private val noteDao: NoteDao
 ) : ViewModel() {
-
-
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -28,7 +25,11 @@ class NoteListViewModel @Inject constructor(
         }
     }
 
-    val noteDaos:Flow<List<NoteModel>> = noteDao.getAll()
+    val noteDaos: Flow<List<NoteModel>> = noteDao.getAll()
 
-
+    fun deleteNoteById(id: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            noteDao.deleteNotesById(id)
+        }
+    }
 }
