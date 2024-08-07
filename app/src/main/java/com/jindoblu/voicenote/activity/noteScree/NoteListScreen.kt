@@ -30,7 +30,7 @@ import com.jindoblu.voicenote.activity.noteScree.composeelement.NoteItem
 import com.jindoblu.voicenote.data.model.room.NoteModel
 
 @Composable
-fun NoteListScreen(onBackCLick: () -> Unit, onCreateNote: () -> Unit) {
+fun NoteListScreen( onCreateNote: () -> Unit) {
     val noteListViewModel = hiltViewModel<NoteListViewModel>()
     val noteListState = noteListViewModel.noteDaos.collectAsState(initial = emptyList<NoteModel>())
     var noteList by remember {
