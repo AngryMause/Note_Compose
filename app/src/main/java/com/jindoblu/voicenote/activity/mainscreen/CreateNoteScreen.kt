@@ -33,7 +33,7 @@ import com.jindoblu.voicenote.data.model.room.NoteModel
 
 @Composable
 fun CreateNoteScreen(onBackClick: () -> Unit) {
-    val viewModel: MainScreenViewModel = hiltViewModel()
+    val viewModel: CreateNoteViewModel = hiltViewModel()
     val viewModelText = viewModel.speechText.collectAsState()
     val launcher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -63,7 +63,6 @@ fun CreateNoteScreen(onBackClick: () -> Unit) {
                 ) -> {
                     // Some works that require permission
                     viewModel.startVoiceInput()
-                    Log.d("ExampleScreen", "Code requires permission")
                 }
 
                 else -> {
