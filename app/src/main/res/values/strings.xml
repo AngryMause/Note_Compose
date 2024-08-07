@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">VoiceNote</string>
+    <string name="firts_screen_info">This is your personal notebook. First, you need to create a pin code. For better protection, the password must contain at least 4 characters.</string>
+    <string name="phone_placeholder"> </string>
+    <string name="phoneNumber">****</string>
+</resources>
